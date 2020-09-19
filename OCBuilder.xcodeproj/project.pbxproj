@@ -13,9 +13,8 @@
 		CF1DCFBD22ED3A3300B513CF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */; };
 		CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */; };
 		CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */; };
-		CF8B54C622FA2EED005BE626 /* Sparkle.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = CF8B54C422FA2EED005BE626 /* Sparkle.framework.dSYM */; };
-		CF8B54C722FA2EF2005BE626 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8B54C322FA2EED005BE626 /* Sparkle.framework */; };
-		CF8B54C822FA2EF2005BE626 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF8B54C322FA2EED005BE626 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFCAF61525165A2A00ACD18D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCAF61325165A2600ACD18D /* Sparkle.framework */; };
+		CFCAF61625165A2A00ACD18D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFCAF61325165A2600ACD18D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFFC393A22ED390600A4CA25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC393922ED390600A4CA25 /* AppDelegate.swift */; };
 		CFFC393E22ED390800A4CA25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFFC393D22ED390800A4CA25 /* Assets.xcassets */; };
 		CFFC394122ED390800A4CA25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFFC393F22ED390800A4CA25 /* Main.storyboard */; };
@@ -28,7 +27,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CF8B54C822FA2EF2005BE626 /* Sparkle.framework in Embed Frameworks */,
+				CFCAF61625165A2A00ACD18D /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,8 +41,7 @@
 		CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = release_without_kexts.command; sourceTree = "<group>"; };
 		CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = debug_without_kexts.command; sourceTree = "<group>"; };
-		CF8B54C322FA2EED005BE626 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		CF8B54C422FA2EED005BE626 /* Sparkle.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Sparkle.framework.dSYM; sourceTree = "<group>"; };
+		CFCAF61325165A2600ACD18D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CFFC393622ED390600A4CA25 /* OCBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFFC393922ED390600A4CA25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFFC393D22ED390800A4CA25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8B54C722FA2EF2005BE626 /* Sparkle.framework in Frameworks */,
+				CFCAF61525165A2A00ACD18D /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,8 +65,7 @@
 		CF8B54C222FA2EDC005BE626 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF8B54C322FA2EED005BE626 /* Sparkle.framework */,
-				CF8B54C422FA2EED005BE626 /* Sparkle.framework.dSYM */,
+				CFCAF61325165A2600ACD18D /* Sparkle.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -180,7 +177,6 @@
 				CF1D3F4823C9253B00CB97A8 /* debug.command in Resources */,
 				CFFC394122ED390800A4CA25 /* Main.storyboard in Resources */,
 				CF0C453522F0E19F00D5AF7D /* release.command in Resources */,
-				CF8B54C622FA2EED005BE626 /* Sparkle.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +348,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = 7.5.0;
+				MARKETING_VERSION = 7.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = OCBuilder.OCBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -383,7 +379,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = 7.5.0;
+				MARKETING_VERSION = 7.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = OCBuilder.OCBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
