@@ -96,12 +96,16 @@ updaterepo() {
   popd >/dev/null || exit 1
 }
 
+builddebug() {
+  xcodebuild -arch x86_64 -configuration Debug  >/dev/null || exit 1
+}
+
 buildrelease() {
   xcodebuild -arch x86_64 -configuration Release  >/dev/null || exit 1
 }
 
-builddebug() {
-  xcodebuild -arch x86_64 -configuration Debug  >/dev/null || exit 1
+copyRepoToOthers() {
+  cp -r
 }
 
 applesupportpackage() {
@@ -358,6 +362,7 @@ echo "Cloning Lilu repo..."
 git clone https://github.com/acidanthera/Lilu.git >/dev/null || exit 1
 cd "${BUILD_DIR}/Lilu"
 echo "Compiling the latest commited Debug version of Lilu..."
+git clone https://github.com/acidanthera/MacKernelSDK
 builddebug
 echo "Lilu Debug Completed..."
 sleep 1
@@ -370,6 +375,7 @@ cd "${BUILD_DIR}"
 echo "Cloning AppleALC repo..."
 git clone https://github.com/acidanthera/AppleALC.git >/dev/null || exit 1
 cp -r "${BUILD_DIR}/Lilu/build/Debug/Lilu.kext" "${BUILD_DIR}/AppleALC"
+cp -r "${BUILD_DIR}/Lilu/MacKernelSDK" "${BUILD_DIR}/AppleALC/"
 cd "${BUILD_DIR}/AppleALC"
 echo "Compiling the latest commited Release version of AppleALC..."
 buildrelease
@@ -380,6 +386,7 @@ cd "${BUILD_DIR}"
 echo "Cloning WhateverGreen repo..."
 git clone https://github.com/acidanthera/WhateverGreen.git >/dev/null || exit 1
 cp -r "${BUILD_DIR}/Lilu/build/Debug/Lilu.kext" "${BUILD_DIR}/WhateverGreen"
+cp -r "${BUILD_DIR}/Lilu/MacKernelSDK" "${BUILD_DIR}/WhateverGreen/"
 cd "${BUILD_DIR}/WhateverGreen"
 echo "Compiling the latest commited Release version of WhateverGreen..."
 buildrelease
@@ -390,6 +397,7 @@ cd "${BUILD_DIR}"
 echo "Cloning VirtualSMC repo..."
 git clone https://github.com/acidanthera/VirtualSMC.git >/dev/null || exit 1
 cp -r "${BUILD_DIR}/Lilu/build/Debug/Lilu.kext" "${BUILD_DIR}/VirtualSMC"
+cp -r "${BUILD_DIR}/Lilu/MacKernelSDK" "${BUILD_DIR}/VirtualSMC/"
 cd "${BUILD_DIR}/VirtualSMC"
 echo "Compiling the latest commited Debug version of VirtualSMC..."
 builddebug
@@ -404,6 +412,7 @@ cd "${BUILD_DIR}"
 echo "Cloning AirportBrcmFixup repo..."
 git clone https://github.com/acidanthera/AirportBrcmFixup.git >/dev/null || exit 1
 cp -r "${BUILD_DIR}/Lilu/build/Debug/Lilu.kext" "${BUILD_DIR}/AirportBrcmFixup"
+cp -r "${BUILD_DIR}/Lilu/MacKernelSDK" "${BUILD_DIR}/AirportBrcmFixup/"
 cd "${BUILD_DIR}/AirportBrcmFixup"
 echo "Compiling the latest commited Release version of AirportBrcmFixup..."
 buildrelease
@@ -435,16 +444,6 @@ cd "${BUILD_DIR}/RTL8111_driver_for_OS_X"
 echo "Compiling the latest commited Release version of RealtekRTL8111..."
 buildrelease
 echo "RealtekRTL8111 Release Completed..."
-
-cd "${BUILD_DIR}"
-
-echo "Cloning NVMeFix repo..."
-git clone https://github.com/acidanthera/NVMeFix.git >/dev/null || exit 1
-cp -r "${BUILD_DIR}/Lilu/build/Debug/Lilu.kext" "${BUILD_DIR}/NVMeFix"
-cd "${BUILD_DIR}/NVMeFix"
-echo "Compiling the latest commited Release version of NVMeFix..."
-buildrelease
-echo "NVMeFix Release Completed..."
 
 cd "${BUILD_DIR}"
 
