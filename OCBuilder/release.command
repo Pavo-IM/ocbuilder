@@ -341,7 +341,6 @@ copyBuildProducts() {
   cp -r "${BUILD_DIR}/AtherosE2200Ethernet/build/Release/AtherosE2200Ethernet.kext" "${FINAL_DIR}"/EFI/OC/Kexts
   cp -r "${BUILD_DIR}/IntelMausi/build/Release/IntelMausi.kext" "${FINAL_DIR}"/EFI/OC/Kexts
   cp -r "${BUILD_DIR}/RTL8111_driver_for_OS_X/build/Release/RealtekRTL8111.kext" "${FINAL_DIR}"/EFI/OC/Kexts
-  cp -r "${BUILD_DIR}/NVMeFix/build/Release/NVMeFix.kext" "${FINAL_DIR}"/EFI/OC/Kexts
   cp -r "${BUILD_DIR}"/OcBinaryData/Resources "${FINAL_DIR}"/EFI/OC/
   cp -r "${BUILD_DIR}"/OcBinaryData/Drivers/*.efi "${FINAL_DIR}"/EFI/OC/Drivers
   echo "All Done!..."
@@ -431,6 +430,7 @@ cd "${BUILD_DIR}"
 
 echo "Cloning IntelMausi repo..."
 git clone https://github.com/acidanthera/IntelMausi.git >/dev/null || exit 1
+cp -r "${BUILD_DIR}/Lilu/MacKernelSDK" "${BUILD_DIR}/IntelMausi/"
 cd "${BUILD_DIR}/IntelMausi"
 echo "Compiling the latest commited Release version of IntelMausi..."
 buildrelease
