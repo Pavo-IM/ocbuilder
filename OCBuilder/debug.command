@@ -333,6 +333,7 @@ copyBuildProducts() {
   cp -r "${BUILD_DIR}/AtherosE2200Ethernet/build/Debug/AtherosE2200Ethernet.kext" "${FINAL_DIR}"/EFI/OC/Kexts
   cp -r "${BUILD_DIR}/IntelMausi/build/Debug/IntelMausi.kext" "${FINAL_DIR}"/EFI/OC/Kexts
   cp -r "${BUILD_DIR}/RTL8111_driver_for_OS_X/build/Debug/RealtekRTL8111.kext" "${FINAL_DIR}"/EFI/OC/Kexts
+  cp -r "${BUILD_DIR}/NVMeFix/build/Debug/NVMeFix.kext" "${FINAL_DIR}"/EFI/OC/Kexts
   cp -r "${BUILD_DIR}"/OcBinaryData/Resources "${FINAL_DIR}"/EFI/OC/
   cp -r "${BUILD_DIR}"/OcBinaryData/Drivers/*.efi "${FINAL_DIR}"/EFI/OC/Drivers
   echo "All Done!..."
@@ -428,6 +429,17 @@ cd "${BUILD_DIR}/RTL8111_driver_for_OS_X"
 echo "Compiling the latest commited Debug version of RealtekRTL8111..."
 builddebug
 echo "RealtekRTL8111 Debug Completed..."
+
+cd "${BUILD_DIR}"
+
+echo "Cloning NVMeFix repo..."
+git clone https://github.com/acidanthera/NVMeFix.git >/dev/null || exit 1
+cp -r "${BUILD_DIR}/Lilu/build/Debug/Lilu.kext" "${BUILD_DIR}/NVMeFix"
+cp -r "${BUILD_DIR}/Lilu/MacKernelSDK" "${BUILD_DIR}/NVMeFix/"
+cd "${BUILD_DIR}/NVMeFix"
+echo "Compiling the latest commited Debug version of NVMeFix..."
+builddebug
+echo "NVMeFix Debug Completed..."
 
 cd "${BUILD_DIR}"
 
