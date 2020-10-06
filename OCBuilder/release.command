@@ -362,7 +362,7 @@ echo "Cloning Lilu repo..."
 git clone https://github.com/acidanthera/Lilu.git >/dev/null || exit 1
 cd "${BUILD_DIR}/Lilu"
 echo "Compiling the latest commited Debug version of Lilu..."
-git clone https://github.com/acidanthera/MacKernelSDK
+git clone https://github.com/acidanthera/MacKernelSDK >/dev/null || exit 1
 builddebug
 echo "Lilu Debug Completed..."
 sleep 1
