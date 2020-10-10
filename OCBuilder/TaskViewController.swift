@@ -70,14 +70,14 @@ class TaskViewController: NSViewController {
                 if withKextsChecked.state == NSControl.StateValue.on {
                     runDebugScript(arguments)
                 } else {
-                    runDebugWithoutKextScript(arguments)
+                    runDebugWithoutKextScriptIA32(arguments)
                 }
             }
             if versionList.titleOfSelectedItem == "Release IA32" {
                 if withKextsChecked.state == NSControl.StateValue.on {
                     runReleaseScript(arguments)
                 } else {
-                    runReleaseWithoutKextScript(arguments)
+                    runReleaseWithoutKextScriptIA32(arguments)
                 }
             }
         }
