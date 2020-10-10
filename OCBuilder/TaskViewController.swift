@@ -18,7 +18,7 @@ class TaskViewController: NSViewController {
     @IBOutlet var progressBar: NSProgressIndicator!
     @IBOutlet var stopButton: NSButton!
     @IBOutlet weak var versionList: NSPopUpButton!
-    let versionArray = ["Debug", "Release" "Debug IA32" "Release IA32"]
+    let versionArray = ["Debug", "Release", "Debug IA32", "Release IA32"]
     @IBOutlet weak var withKextsChecked: NSButton!
     
     override func viewDidLoad() {
