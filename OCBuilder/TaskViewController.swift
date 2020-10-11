@@ -65,18 +65,9 @@ class TaskViewController: NSViewController {
                 } else {
                     runReleaseWithoutKextScript(arguments)
                 }
-            }
-            if versionList.titleOfSelectedItem == "Debug IA32" {
-                if withKextsChecked.state == NSControl.StateValue.on {
-                    runDebugScript(arguments)
-                } else {
-                    runDebugWithoutKextScriptIA32(arguments)
+                if versionList.titleOfSelectedItem == "Debug IA32" {           runDebugWithoutKextScriptIA32(arguments)
                 }
-            }
-            if versionList.titleOfSelectedItem == "Release IA32" {
-                if withKextsChecked.state == NSControl.StateValue.on {
-                    runReleaseScript(arguments)
-                } else {
+                if versionList.titleOfSelectedItem == "Release IA32" {
                     runReleaseWithoutKextScriptIA32(arguments)
                 }
             }
