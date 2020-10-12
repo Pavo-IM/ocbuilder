@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		242EF84825326AAF00E41AEA /* debug_without_kexts_IA32.command in Resources */ = {isa = PBXBuildFile; fileRef = 242EF84625326AAF00E41AEA /* debug_without_kexts_IA32.command */; };
+		242EF84925326AAF00E41AEA /* release_without_kexts_IA32.command in Resources */ = {isa = PBXBuildFile; fileRef = 242EF84725326AAF00E41AEA /* release_without_kexts_IA32.command */; };
 		CF0C453522F0E19F00D5AF7D /* release.command in Resources */ = {isa = PBXBuildFile; fileRef = CF0C452922F0E19F00D5AF7D /* release.command */; };
 		CF16433823CD462D00D02E15 /* OC.png in Resources */ = {isa = PBXBuildFile; fileRef = CF16433723CD462D00D02E15 /* OC.png */; };
 		CF1D3F4823C9253B00CB97A8 /* debug.command in Resources */ = {isa = PBXBuildFile; fileRef = CF1D3F4723C9253B00CB97A8 /* debug.command */; };
@@ -35,6 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		242EF84625326AAF00E41AEA /* debug_without_kexts_IA32.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug_without_kexts_IA32.command; sourceTree = "<group>"; };
+		242EF84725326AAF00E41AEA /* release_without_kexts_IA32.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = release_without_kexts_IA32.command; sourceTree = "<group>"; };
 		CF0C452922F0E19F00D5AF7D /* release.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = release.command; sourceTree = "<group>"; };
 		CF16433723CD462D00D02E15 /* OC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OC.png; sourceTree = "<group>"; };
 		CF1D3F4723C9253B00CB97A8 /* debug.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = debug.command; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				CFFC393922ED390600A4CA25 /* AppDelegate.swift */,
 				CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */,
 				CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */,
+				242EF84625326AAF00E41AEA /* debug_without_kexts_IA32.command */,
+				242EF84725326AAF00E41AEA /* release_without_kexts_IA32.command */,
 				CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */,
 				CF0C452922F0E19F00D5AF7D /* release.command */,
 				CF1D3F4723C9253B00CB97A8 /* debug.command */,
@@ -173,9 +179,11 @@
 				CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */,
 				CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */,
 				CFFC393E22ED390800A4CA25 /* Assets.xcassets in Resources */,
+				242EF84925326AAF00E41AEA /* release_without_kexts_IA32.command in Resources */,
 				CF16433823CD462D00D02E15 /* OC.png in Resources */,
 				CF1D3F4823C9253B00CB97A8 /* debug.command in Resources */,
 				CFFC394122ED390800A4CA25 /* Main.storyboard in Resources */,
+				242EF84825326AAF00E41AEA /* debug_without_kexts_IA32.command in Resources */,
 				CF0C453522F0E19F00D5AF7D /* release.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -315,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -334,7 +342,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5DG8PLV54H;
+				DEVELOPMENT_TEAM = 2AMVHQ46X7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -365,7 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5DG8PLV54H;
+				DEVELOPMENT_TEAM = 2AMVHQ46X7;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
