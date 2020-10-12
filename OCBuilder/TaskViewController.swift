@@ -65,7 +65,8 @@ class TaskViewController: NSViewController {
                 } else {
                     runReleaseWithoutKextScript(arguments)
                 }
-                if versionList.titleOfSelectedItem == "Debug IA32" {           runDebugWithoutKextScriptIA32(arguments)
+                if versionList.titleOfSelectedItem == "Debug IA32" {
+                    runDebugWithoutKextScriptIA32(arguments)
                 }
                 if versionList.titleOfSelectedItem == "Release IA32" {
                     runReleaseWithoutKextScriptIA32(arguments)
@@ -74,7 +75,7 @@ class TaskViewController: NSViewController {
         }
     }
     
-    @IBAction func stopTask(_ sender: Any) {
+    @IBAction func stopTask(_ sender: NSButton) {
         stopButton.isEnabled = false
         progressBar.isHidden = true
         if isRunning {
