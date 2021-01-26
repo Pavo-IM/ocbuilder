@@ -186,7 +186,6 @@ opencorepackage() {
     "ChipTune.efi"
     "CleanNvram.efi"
     "GopStop.efi"
-    "HdaCodecDump.efi"
     "KeyTester.efi"
     "MmapDump.efi"
     "ResetSystem.efi"
