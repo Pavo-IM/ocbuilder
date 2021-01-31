@@ -20,6 +20,12 @@ workflows:
         - content: |-
             #!/bin/bash
 
+            # ---- Generate Sparkle EdDSA key:
+            APPCAST_KEY=$($BITRISE_SOURCE_DIR/ocbuilder/Support_Files/generate_keys -f $BITRISE_SOURCE_DIR/ocbuilder/Support_Files/private-key-file)
+
+            # ---- Set the SUPublicEDKey to the generated EdDSA key:
+            /usr/libexec/PlistBuddy -c "Set SUPublicEDKey $APPCAST_KEY" $BITRISE_SOURCE_DIR/ocbuilder/Info.plist
+
             # ---- Get Current Bundle Version:
             build_version="$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" $BITRISE_SOURCE_DIR/ocbuilder/Info.plist)"
             short_bundle_version=`sed -n '/MARKETING_VERSION/{s/MARKETING_VERSION = //;s/;//;s/^[[:space:]]*//;p;q;}' $BITRISE_SOURCE_DIR/ocbuilder.xcodeproj/project.pbxproj`
@@ -41,6 +47,16 @@ workflows:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
         - scheme: "$BITRISE_SCHEME"
+    - script:
+        inputs:
+        - content: |+
+            #!/bin/bash
+
+            # ---- Remove DsYM file:
+            rm -rf $BITRISE_DSYM_PATH
+
+            # ---- Generate Sparkle appacast.xml:
+            $BITRISE_SOURCE_DIR/ocbuilder/Support_Files/generate_appcast $BITRISE_DEPLOY_DIR
     - deploy-to-bitrise-io: {}
     - cache-push:
         inputs:
