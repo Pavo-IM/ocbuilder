@@ -15,8 +15,9 @@
 		CF1DCFBD22ED3A3300B513CF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */; };
 		CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */; };
 		CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */; };
-		CFCAF61525165A2A00ACD18D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCAF61325165A2600ACD18D /* Sparkle.framework */; };
-		CFCAF61625165A2A00ACD18D /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFCAF61325165A2600ACD18D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CFD761D125C74D280021793A /* XPCServices in Resources */ = {isa = PBXBuildFile; fileRef = CFD761CF25C74D270021793A /* XPCServices */; };
+		CFD761D325C74D310021793A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD761D025C74D280021793A /* Sparkle.framework */; };
+		CFD761D425C74D310021793A /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD761D025C74D280021793A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFFC393A22ED390600A4CA25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFC393922ED390600A4CA25 /* AppDelegate.swift */; };
 		CFFC393E22ED390800A4CA25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFFC393D22ED390800A4CA25 /* Assets.xcassets */; };
 		CFFC394122ED390800A4CA25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFFC393F22ED390800A4CA25 /* Main.storyboard */; };
@@ -29,7 +30,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFCAF61625165A2A00ACD18D /* Sparkle.framework in Embed Frameworks */,
+				CFD761D425C74D310021793A /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,7 +46,8 @@
 		CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = release_without_kexts.command; sourceTree = "<group>"; };
 		CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = debug_without_kexts.command; sourceTree = "<group>"; };
-		CFCAF61325165A2600ACD18D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		CFD761CF25C74D270021793A /* XPCServices */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XPCServices; sourceTree = "<group>"; };
+		CFD761D025C74D280021793A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CFFC393622ED390600A4CA25 /* OCBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFFC393922ED390600A4CA25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFFC393D22ED390800A4CA25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFCAF61525165A2A00ACD18D /* Sparkle.framework in Frameworks */,
+				CFD761D325C74D310021793A /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +71,8 @@
 		CF8B54C222FA2EDC005BE626 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CFCAF61325165A2600ACD18D /* Sparkle.framework */,
+				CFD761D025C74D280021793A /* Sparkle.framework */,
+				CFD761CF25C74D270021793A /* XPCServices */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -139,7 +142,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Pavo;
 				TargetAttributes = {
 					CFFC393522ED390600A4CA25 = {
@@ -178,6 +181,7 @@
 			files = (
 				CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */,
 				CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */,
+				CFD761D125C74D280021793A /* XPCServices in Resources */,
 				CFFC393E22ED390800A4CA25 /* Assets.xcassets in Resources */,
 				242EF84925326AAF00E41AEA /* release_without_kexts_IA32.command in Resources */,
 				CF16433823CD462D00D02E15 /* OC.png in Resources */,
@@ -336,15 +340,15 @@
 		CFFC394722ED390800A4CA25 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OCBuilder/OCBuilder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7.5.8;
 				DEVELOPMENT_TEAM = 5DG8PLV54H;
 				ENABLE_HARDENED_RUNTIME = NO;
+				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -357,7 +361,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = 7.5.7;
+				MARKETING_VERSION = 7.5.8;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = OCBuilder.OCBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -368,15 +373,15 @@
 		CFFC394822ED390800A4CA25 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OCBuilder/OCBuilder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7.5.8;
 				DEVELOPMENT_TEAM = 5DG8PLV54H;
 				ENABLE_HARDENED_RUNTIME = NO;
+				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -389,7 +394,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = 7.5.7;
+				MARKETING_VERSION = 7.5.8;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = OCBuilder.OCBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

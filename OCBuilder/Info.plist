@@ -30,13 +30,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
 	<key>SUFeedURL</key>
-	<string>https://ocbuilder.herokuapp.com/ocbuilder/appcast.xml</string>
-	<key>SUScheduledCheckInterval</key>
-	<integer>3600</integer>
-	<key>SUShowReleaseNotes</key>
-	<false/>
+	<string>https://github.com/Pavo-IM/AGPMInjector/releases/latest/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>B3Y9YYu6cR/lnB9DO6MPqEhOxe/7f6bCDFqx+TOfxU8=</string>
 </dict>
 </plist>

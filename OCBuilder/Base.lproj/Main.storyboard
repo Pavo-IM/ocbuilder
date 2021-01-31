@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -682,7 +682,7 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="OCBuilder" customModuleProvider="target"/>
-                <customObject id="tY2-jn-N0G" customClass="SUUpdater"/>
+                <customObject id="tY2-jn-N0G" customClass="SPUStandardUpdaterController"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -754,7 +754,7 @@
                                 </textFieldCell>
                             </textField>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNb-Zw-qeh" userLabel="Completed Location">
-                                <rect key="frame" x="17" y="513" width="99" height="25"/>
+                                <rect key="frame" x="17" y="513" width="115" height="25"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" pathStyle="popUp" id="YOf-RR-xwR">
                                     <font key="font" metaFont="system"/>
                                 </pathCell>
@@ -762,15 +762,15 @@
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MA-Tb-gM7" userLabel="Output View">
                                 <rect key="frame" x="20" y="214" width="696" height="288"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="jii-9O-Q8S">
-                                    <rect key="frame" x="0.0" y="0.0" width="681" height="288"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="696" height="288"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="efZ-vh-5Y3">
-                                            <rect key="frame" x="0.0" y="0.0" width="681" height="288"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="696" height="288"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="681" height="288"/>
+                                            <size key="minSize" width="696" height="288"/>
                                             <size key="maxSize" width="696" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -784,7 +784,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="jEJ-53-Jvb">
-                                    <rect key="frame" x="681" y="0.0" width="15" height="288"/>
+                                    <rect key="frame" x="680" y="0.0" width="16" height="288"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
