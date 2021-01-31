@@ -1,11 +1,21 @@
----
-format_version: '7'
+format_version: "7"
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: macos
+app:
+  envs:
+  - BITRISE_PROJECT_PATH: OCBuilder.xcodeproj
+    opts:
+      is_expand: false
+  - BITRISE_SCHEME: OCBuilder
+    opts:
+      is_expand: false
+  - BITRISE_EXPORT_METHOD: development
+    opts:
+      is_expand: false
 trigger_map:
 - push_branch: master
   workflow: primary
-- pull_request_source_branch: "*"
+- pull_request_source_branch: '*'
   workflow: primary
 workflows:
   primary:
@@ -37,19 +47,21 @@ workflows:
             envman add --key "CURRENT_SHORT_BUNDLE_VERSION" --value "${CONFIG_short_bundle_version}"
         outputs:
         - CURRENT_BUILD_VERSION: CURRENT_BUILD_VERSION
+          opts: {}
         - CURRENT_SHORT_BUNDLE_VERSION: CURRENT_SHORT_BUNDLE_VERSION
+          opts: {}
     - set-xcode-build-number:
         inputs:
-        - build_short_version_string: ''
-        - build_version: "$CURRENT_SHORT_BUNDLE_VERSION"
-        - plist_path: "$BITRISE_SOURCE_DIR/OCBuilder/Info.plist"
+        - build_short_version_string: ""
+        - build_version: $CURRENT_SHORT_BUNDLE_VERSION
+        - plist_path: $BITRISE_SOURCE_DIR/OCBuilder/Info.plist
     - xcode-archive-mac:
         inputs:
-        - project_path: "$BITRISE_PROJECT_PATH"
-        - scheme: "$BITRISE_SCHEME"
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
     - script:
         inputs:
-        - content: |+
+        - content: |
             #!/bin/bash
 
             # ---- Remove DsYM file:
@@ -60,7 +72,7 @@ workflows:
     - deploy-to-bitrise-io: {}
     - cache-push:
         inputs:
-        - compress_archive: 'true'
+        - compress_archive: "true"
     - generate-changelog:
         inputs:
         - new_version: 'new_version: $BITRISE_GIT_TAG'
@@ -75,15 +87,5 @@ workflows:
             $BITRISE_DEPLOY_DIR/appcast.xml
         - repository_url: https://github.com/Pavo-IM/ocbuilder.git
         - commit: master
+        - draft: "no"
         - api_token: $GIT_ACCESS_TOKEN
-app:
-  envs:
-  - opts:
-      is_expand: false
-    BITRISE_PROJECT_PATH: OCBuilder.xcodeproj
-  - opts:
-      is_expand: false
-    BITRISE_SCHEME: OCBuilder
-  - opts:
-      is_expand: false
-    BITRISE_EXPORT_METHOD: development
