@@ -15,6 +15,8 @@
 		CF1DCFBD22ED3A3300B513CF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */; };
 		CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */; };
 		CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */; };
+		CFCE804825C74EDF00D741CE /* generate_appcast in Resources */ = {isa = PBXBuildFile; fileRef = CFCE804625C74EDF00D741CE /* generate_appcast */; };
+		CFCE804925C74EDF00D741CE /* generate_keys in Resources */ = {isa = PBXBuildFile; fileRef = CFCE804725C74EDF00D741CE /* generate_keys */; };
 		CFD761D125C74D280021793A /* XPCServices in Resources */ = {isa = PBXBuildFile; fileRef = CFD761CF25C74D270021793A /* XPCServices */; };
 		CFD761D325C74D310021793A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD761D025C74D280021793A /* Sparkle.framework */; };
 		CFD761D425C74D310021793A /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD761D025C74D280021793A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -46,6 +48,8 @@
 		CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = release_without_kexts.command; sourceTree = "<group>"; };
 		CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = debug_without_kexts.command; sourceTree = "<group>"; };
+		CFCE804625C74EDF00D741CE /* generate_appcast */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = generate_appcast; sourceTree = "<group>"; };
+		CFCE804725C74EDF00D741CE /* generate_keys */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = generate_keys; sourceTree = "<group>"; };
 		CFD761CF25C74D270021793A /* XPCServices */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XPCServices; sourceTree = "<group>"; };
 		CFD761D025C74D280021793A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CFFC393622ED390600A4CA25 /* OCBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +81,19 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
+		CFCE804525C74EC700D741CE /* Support_Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFCE804625C74EDF00D741CE /* generate_appcast */,
+				CFCE804725C74EDF00D741CE /* generate_keys */,
+			);
+			path = Support_Files;
+			sourceTree = "<group>";
+		};
 		CFFC392D22ED390600A4CA25 = {
 			isa = PBXGroup;
 			children = (
+				CFCE804525C74EC700D741CE /* Support_Files */,
 				CFFC393822ED390600A4CA25 /* OCBuilder */,
 				CFFC393722ED390600A4CA25 /* Products */,
 				CF8B54C222FA2EDC005BE626 /* Frameworks */,
@@ -181,6 +195,7 @@
 			files = (
 				CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */,
 				CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */,
+				CFCE804825C74EDF00D741CE /* generate_appcast in Resources */,
 				CFD761D125C74D280021793A /* XPCServices in Resources */,
 				CFFC393E22ED390800A4CA25 /* Assets.xcassets in Resources */,
 				242EF84925326AAF00E41AEA /* release_without_kexts_IA32.command in Resources */,
@@ -189,6 +204,7 @@
 				CFFC394122ED390800A4CA25 /* Main.storyboard in Resources */,
 				242EF84825326AAF00E41AEA /* debug_without_kexts_IA32.command in Resources */,
 				CF0C453522F0E19F00D5AF7D /* release.command in Resources */,
+				CFCE804925C74EDF00D741CE /* generate_keys in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

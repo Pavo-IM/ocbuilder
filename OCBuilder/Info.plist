@@ -31,7 +31,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>https://github.com/Pavo-IM/AGPMInjector/releases/latest/download/appcast.xml</string>
+	<string>https://github.com/Pavo-IM/ocbuilder/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>B3Y9YYu6cR/lnB9DO6MPqEhOxe/7f6bCDFqx+TOfxU8=</string>
 </dict>
