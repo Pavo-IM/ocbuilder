@@ -21,14 +21,14 @@ workflows:
             #!/bin/bash
 
             # ---- Generate Sparkle EdDSA key:
-            APPCAST_KEY=$($BITRISE_SOURCE_DIR/ocbuilder/Support_Files/generate_keys -f $BITRISE_SOURCE_DIR/ocbuilder/Support_Files/private-key-file)
+            APPCAST_KEY=$($BITRISE_SOURCE_DIR/Support_Files/generate_keys -p)
 
             # ---- Set the SUPublicEDKey to the generated EdDSA key:
-            /usr/libexec/PlistBuddy -c "Set SUPublicEDKey $APPCAST_KEY" $BITRISE_SOURCE_DIR/ocbuilder/Info.plist
+            /usr/libexec/PlistBuddy -c "Set SUPublicEDKey $APPCAST_KEY" $BITRISE_SOURCE_DIR/OCBuilder/Info.plist
 
             # ---- Get Current Bundle Version:
-            build_version="$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" $BITRISE_SOURCE_DIR/ocbuilder/Info.plist)"
-            short_bundle_version=`sed -n '/MARKETING_VERSION/{s/MARKETING_VERSION = //;s/;//;s/^[[:space:]]*//;p;q;}' $BITRISE_SOURCE_DIR/ocbuilder.xcodeproj/project.pbxproj`
+            build_version="$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" $BITRISE_SOURCE_DIR/OCBuilder/Info.plist)"
+            short_bundle_version=`sed -n '/MARKETING_VERSION/{s/MARKETING_VERSION = //;s/;//;s/^[[:space:]]*//;p;q;}' $BITRISE_SOURCE_DIR/OCBuilder.xcodeproj/project.pbxproj`
             CONFIG_build_version=${build_version}
             CONFIG_short_bundle_version=${short_bundle_version}
 
@@ -42,7 +42,7 @@ workflows:
         inputs:
         - build_short_version_string: ''
         - build_version: "$CURRENT_SHORT_BUNDLE_VERSION"
-        - plist_path: "$BITRISE_SOURCE_DIR/ocbuilder/Info.plist"
+        - plist_path: "$BITRISE_SOURCE_DIR/OCBuilder/Info.plist"
     - xcode-archive-mac:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
@@ -56,7 +56,7 @@ workflows:
             rm -rf $BITRISE_DSYM_PATH
 
             # ---- Generate Sparkle appacast.xml:
-            $BITRISE_SOURCE_DIR/ocbuilder/Support_Files/generate_appcast $BITRISE_DEPLOY_DIR
+            $BITRISE_SOURCE_DIR/Support_Files/generate_appcast $BITRISE_DEPLOY_DIR
     - deploy-to-bitrise-io: {}
     - cache-push:
         inputs:
@@ -66,14 +66,16 @@ workflows:
         - new_version: 'new_version: $BITRISE_GIT_TAG'
     - github-release:
         inputs:
-        - username: "$GITHUB_USER"
-        - tag: "$CURRENT_SHORT_BUNDLE_VERSION"
+        - username: $GITHUB_USER
+        - tag: $CURRENT_SHORT_BUNDLE_VERSION
+        - name: $CURRENT_SHORT_BUNDLE_VERSION
+        - body: $BITRISE_CHANGELOG
+        - files_to_upload: |-
+            $BITRISE_EXPORTED_FILE_PATH
+            $BITRISE_DEPLOY_DIR/appcast.xml
+        - repository_url: https://github.com/Pavo-IM/ocbuilder.git
         - commit: master
-        - name: "$CURRENT_SHORT_BUNDLE_VERSION"
-        - body: "$GIT_CLONE_COMMIT_MESSAGE_SUBJECT"
-        - files_to_upload: "$BITRISE_EXPORTED_FILE_PATH"
-        - draft: 'no'
-        - api_token: "$GIT_ACCESS_TOKEN"
+        - api_token: $GIT_ACCESS_TOKEN
 app:
   envs:
   - opts:

@@ -33,6 +33,7 @@
 	<key>SUFeedURL</key>
 	<string>https://github.com/Pavo-IM/ocbuilder/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
-	<string>B3Y9YYu6cR/lnB9DO6MPqEhOxe/7f6bCDFqx+TOfxU8=</string>
+	<string>Importing signing key..
+ERROR: You already have a conflicting key in your Keychain which was not found during lookup.</string>
 </dict>
 </plist>
