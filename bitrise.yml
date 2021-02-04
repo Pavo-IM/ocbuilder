@@ -64,8 +64,9 @@ workflows:
         - content: |
             #!/bin/bash
 
-            # ---- Remove DsYM file:
-            rm -rf $BITRISE_DSYM_PATH
+            # ---- Remove Sparkle_generate_appcast cache:
+            rm -rf $BITRISE_DEPLOY_DIR/*.dSYM.zip
+            rm -rf $BITRISE_DEPLOY_DIR/export_options.plist
 
             # ---- Generate Sparkle appacast.xml:
             $BITRISE_SOURCE_DIR/Support_Files/generate_appcast $BITRISE_DEPLOY_DIR
