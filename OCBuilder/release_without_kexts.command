@@ -191,7 +191,6 @@ opencorepackage() {
     "ResetSystem.efi"
     "RtcRw.efi"
     "OpenControl.efi"
-    "VerifyMsrE2.efi"
     )
   for efiTool in "${efiTools[@]}"; do
     cp "${efiTool}" tmp/EFI/OC/Tools/ || exit 1
