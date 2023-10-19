@@ -13,6 +13,7 @@ MacOS App to compile Opencore, common drivers and kexts that are used with OpenC
 - [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)
 - [AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg.git)
 - [OpenCoreShell](https://github.com/acidanthera/OpenCoreShell.git)
+and more ... if you manage manually the kexts list "OC_kexts.plist" with your pefered plist editor
 
 ## The app can be installed from unofficial [Homebrew](https://brew.sh/) cask tap via one-line command:
 `brew cask install yurikoles/yurikoles/ocbuilder`
