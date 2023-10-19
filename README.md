@@ -106,7 +106,7 @@ You manage the kexts list (manually) if you want to build kext(s)
 
 Working dir content
 
-![image](https://github.com/matxpa/ocbuilder/assets/70573409/09b5e242-efa9-460c-b7a5-4ff830cafe9a)
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/d5dcc515-d7b3-4706-8ef8-802220045022)
 
 At the end you can select and save the content of that main window
 
@@ -114,7 +114,8 @@ At the end you can select and save the content of that main window
 
 And the result in the build dest. dir.
 
-![image](https://github.com/matxpa/ocbuilder/assets/70573409/d5dcc515-d7b3-4706-8ef8-802220045022)
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/09b5e242-efa9-460c-b7a5-4ff830cafe9a)
+
 
 
 
