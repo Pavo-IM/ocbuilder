@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		242EF84825326AAF00E41AEA /* debug_without_kexts_IA32.command in Resources */ = {isa = PBXBuildFile; fileRef = 242EF84625326AAF00E41AEA /* debug_without_kexts_IA32.command */; };
-		242EF84925326AAF00E41AEA /* release_without_kexts_IA32.command in Resources */ = {isa = PBXBuildFile; fileRef = 242EF84725326AAF00E41AEA /* release_without_kexts_IA32.command */; };
-		CF0C453522F0E19F00D5AF7D /* release.command in Resources */ = {isa = PBXBuildFile; fileRef = CF0C452922F0E19F00D5AF7D /* release.command */; };
+		9637503D2875C45C00B6E4E1 /* OC_kexts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9637503C2875C45C00B6E4E1 /* OC_kexts.plist */; };
+		96ABD5F82875D0C100D8F885 /* OC_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = 96ABD5F72875D0C100D8F885 /* OC_kexts.command */; };
+		96F5F6F2262CBE10004238FC /* runOCBuilderScript.command in Resources */ = {isa = PBXBuildFile; fileRef = 96F5F6F1262CBE0F004238FC /* runOCBuilderScript.command */; };
 		CF16433823CD462D00D02E15 /* OC.png in Resources */ = {isa = PBXBuildFile; fileRef = CF16433723CD462D00D02E15 /* OC.png */; };
-		CF1D3F4823C9253B00CB97A8 /* debug.command in Resources */ = {isa = PBXBuildFile; fileRef = CF1D3F4723C9253B00CB97A8 /* debug.command */; };
 		CF1DCFBD22ED3A3300B513CF /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */; };
-		CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */; };
-		CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */ = {isa = PBXBuildFile; fileRef = CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */; };
 		CFCE804825C74EDF00D741CE /* generate_appcast in Resources */ = {isa = PBXBuildFile; fileRef = CFCE804625C74EDF00D741CE /* generate_appcast */; };
 		CFCE804925C74EDF00D741CE /* generate_keys in Resources */ = {isa = PBXBuildFile; fileRef = CFCE804725C74EDF00D741CE /* generate_keys */; };
 		CFD761D125C74D280021793A /* XPCServices in Resources */ = {isa = PBXBuildFile; fileRef = CFD761CF25C74D270021793A /* XPCServices */; };
@@ -40,14 +37,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		242EF84625326AAF00E41AEA /* debug_without_kexts_IA32.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = debug_without_kexts_IA32.command; sourceTree = "<group>"; };
-		242EF84725326AAF00E41AEA /* release_without_kexts_IA32.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = release_without_kexts_IA32.command; sourceTree = "<group>"; };
-		CF0C452922F0E19F00D5AF7D /* release.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = release.command; sourceTree = "<group>"; };
+		9637503C2875C45C00B6E4E1 /* OC_kexts.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OC_kexts.plist; sourceTree = "<group>"; };
+		96ABD5F72875D0C100D8F885 /* OC_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = OC_kexts.command; sourceTree = "<group>"; };
+		96F5F6F1262CBE0F004238FC /* runOCBuilderScript.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = runOCBuilderScript.command; sourceTree = "<group>"; };
 		CF16433723CD462D00D02E15 /* OC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OC.png; sourceTree = "<group>"; };
-		CF1D3F4723C9253B00CB97A8 /* debug.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = debug.command; sourceTree = "<group>"; };
 		CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
-		CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = release_without_kexts.command; sourceTree = "<group>"; };
-		CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = debug_without_kexts.command; sourceTree = "<group>"; };
 		CFCE804625C74EDF00D741CE /* generate_appcast */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = generate_appcast; sourceTree = "<group>"; };
 		CFCE804725C74EDF00D741CE /* generate_keys */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = generate_keys; sourceTree = "<group>"; };
 		CFD761CF25C74D270021793A /* XPCServices */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XPCServices; sourceTree = "<group>"; };
@@ -111,15 +105,12 @@
 		CFFC393822ED390600A4CA25 /* OCBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				9637503C2875C45C00B6E4E1 /* OC_kexts.plist */,
+				96ABD5F72875D0C100D8F885 /* OC_kexts.command */,
+				96F5F6F1262CBE0F004238FC /* runOCBuilderScript.command */,
 				CF16433723CD462D00D02E15 /* OC.png */,
 				CFFC393922ED390600A4CA25 /* AppDelegate.swift */,
 				CF1DCFBC22ED3A3300B513CF /* TaskViewController.swift */,
-				CF5FCF3F23CA60AC00542BB5 /* release_without_kexts.command */,
-				242EF84625326AAF00E41AEA /* debug_without_kexts_IA32.command */,
-				242EF84725326AAF00E41AEA /* release_without_kexts_IA32.command */,
-				CF5FCF4123CA60C800542BB5 /* debug_without_kexts.command */,
-				CF0C452922F0E19F00D5AF7D /* release.command */,
-				CF1D3F4723C9253B00CB97A8 /* debug.command */,
 				CFFC393D22ED390800A4CA25 /* Assets.xcassets */,
 				CFFC393F22ED390800A4CA25 /* Main.storyboard */,
 				CFFC394222ED390800A4CA25 /* Info.plist */,
@@ -156,7 +147,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = Pavo;
 				TargetAttributes = {
 					CFFC393522ED390600A4CA25 = {
@@ -193,17 +184,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF5FCF4023CA60AC00542BB5 /* release_without_kexts.command in Resources */,
-				CF5FCF4223CA60C800542BB5 /* debug_without_kexts.command in Resources */,
+				96ABD5F82875D0C100D8F885 /* OC_kexts.command in Resources */,
+				9637503D2875C45C00B6E4E1 /* OC_kexts.plist in Resources */,
 				CFCE804825C74EDF00D741CE /* generate_appcast in Resources */,
 				CFD761D125C74D280021793A /* XPCServices in Resources */,
 				CFFC393E22ED390800A4CA25 /* Assets.xcassets in Resources */,
-				242EF84925326AAF00E41AEA /* release_without_kexts_IA32.command in Resources */,
 				CF16433823CD462D00D02E15 /* OC.png in Resources */,
-				CF1D3F4823C9253B00CB97A8 /* debug.command in Resources */,
 				CFFC394122ED390800A4CA25 /* Main.storyboard in Resources */,
-				242EF84825326AAF00E41AEA /* debug_without_kexts_IA32.command in Resources */,
-				CF0C453522F0E19F00D5AF7D /* release.command in Resources */,
+				96F5F6F2262CBE10004238FC /* runOCBuilderScript.command in Resources */,
 				CFCE804925C74EDF00D741CE /* generate_keys in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +257,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -286,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -332,6 +321,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -343,7 +333,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -358,11 +348,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OCBuilder/OCBuilder.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 7.6.1;
-				DEVELOPMENT_TEAM = 5DG8PLV54H;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -376,7 +367,7 @@
 					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 7.6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = OCBuilder.OCBuilder;
@@ -391,11 +382,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OCBuilder/OCBuilder.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 7.6.1;
-				DEVELOPMENT_TEAM = 5DG8PLV54H;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				EXCLUDED_ARCHS = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -409,7 +401,7 @@
 					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 7.6.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = OCBuilder.OCBuilder;
