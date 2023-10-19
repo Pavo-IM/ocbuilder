@@ -92,3 +92,11 @@ This app will check to see if you have all the required tools installed in order
 |   |   |   |--obtain_recovery.php
 |   |   |   |--recovery_urls.txt
 ```
+
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/a82ede90-f164-4b8c-82fd-298300a2141c)
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/40202ef0-d030-4b1d-a2f8-e3cf0b830a6a)
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/64292bf7-d62d-429f-a659-a4c936a7dbe6)
+
