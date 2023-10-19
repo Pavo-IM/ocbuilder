@@ -93,10 +93,10 @@ This app will check to see if you have all the required tools installed in order
 |   |   |   |--recovery_urls.txt
 ```
 
-You choose to build a Release a Debug X64 IA32 or you don't want to build OpenCore
+You choose to build a Release a Debug X64 IA32 or you don't want to build OpenCore.
 You choose the build dest. repert.
-You choose to build some kexts or not
-You choose to get stg and/or err logs (in working dir, aka /private/tmp/OCBuilder_Clone)
+You choose to build some kexts or not.
+You choose to get std and/or err logs (in working dir, aka /private/tmp/OCBuilder_Clone).
 
 ![image](https://github.com/matxpa/ocbuilder/assets/70573409/a82ede90-f164-4b8c-82fd-298300a2141c)
 
@@ -106,9 +106,15 @@ You manage the kexts list (manually) if you want to build kext(s)
 
 Working dir content
 
-![image](https://github.com/matxpa/ocbuilder/assets/70573409/d5dcc515-d7b3-4706-8ef8-802220045022)
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/09b5e242-efa9-460c-b7a5-4ff830cafe9a)
 
 At the end you can select and save the content of that main window
 
 ![image](https://github.com/matxpa/ocbuilder/assets/70573409/64292bf7-d62d-429f-a659-a4c936a7dbe6)
+
+And the result in the build dest. dir.
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/d5dcc515-d7b3-4706-8ef8-802220045022)
+
+
 
