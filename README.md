@@ -114,8 +114,4 @@ At the end you can select and save the content of that main window
 
 And the result in the build dest. dir.
 
-![image](https://github.com/matxpa/ocbuilder/assets/70573409/09b5e242-efa9-460c-b7a5-4ff830cafe9a)
-
-
-
-
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/612db91c-c92c-44c0-a79f-9d471fb5ce99)
