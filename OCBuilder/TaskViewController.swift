@@ -18,8 +18,10 @@ class TaskViewController: NSViewController {
     @IBOutlet var progressBar: NSProgressIndicator!
     @IBOutlet var stopButton: NSButton!
     @IBOutlet weak var versionList: NSPopUpButton!
-    let versionArray = ["Debug", "Release", "Debug IA32", "Release IA32"]
+    let versionArray = ["Release X64", "Debug X64", "Release IA32", "Debug IA32", "None"]
     @IBOutlet weak var withKextsChecked: NSButton!
+    @IBOutlet weak var withStdLogChecked: NSButton!
+    @IBOutlet weak var withErrLogChecked: NSButton!
 
     override func viewDidLoad() {
         stopButton.isEnabled = false
@@ -44,43 +46,64 @@ class TaskViewController: NSViewController {
         stopButton.isEnabled = true
         progressBar.isHidden = false
         outputText.string = ""
-        if let repositoryURL = pathLocation.url {
-            let cloneLocation = "/tmp"
-            let finalLocation = repositoryURL.path
-            var arguments:[String] = []
-            arguments.append(cloneLocation)
-            arguments.append(finalLocation)
-            buildButton.isEnabled = false
-            progressBar.startAnimation(self)
-            if versionList.titleOfSelectedItem == "Debug" {
-				arguments.append("Debug")
-                arguments.append("X64")
-                if withKextsChecked.state == NSControl.StateValue.on {
-					arguments.append("1")
-                 } else {
-					arguments.append("0")
+        if (versionList.titleOfSelectedItem == "None" && withKextsChecked.state == NSControl.StateValue.on) || versionList.titleOfSelectedItem != "None"  {
+            if let repositoryURL = pathLocation.url {
+                let cloneLocation = "/tmp"
+                let finalLocation = repositoryURL.path
+                var arguments:[String] = []
+                arguments.append(cloneLocation)
+                arguments.append(finalLocation)
+                buildButton.isEnabled = false
+                progressBar.startAnimation(self)
+                if versionList.titleOfSelectedItem == "Release X64" {
+                    arguments.append("Release")
+                    arguments.append("X64")
+                    if withKextsChecked.state == NSControl.StateValue.on {
+                        arguments.append("1")
+                    } else {
+                        arguments.append("0")
+                    }
                 }
-            }
-            if versionList.titleOfSelectedItem == "Release" {
-                arguments.append("Release")
-                arguments.append("X64")
-                if withKextsChecked.state == NSControl.StateValue.on {
+                if versionList.titleOfSelectedItem == "Debug X64" {
+                    arguments.append("Debug")
+                    arguments.append("X64")
+                    if withKextsChecked.state == NSControl.StateValue.on {
+                        arguments.append("1")
+                    } else {
+                        arguments.append("0")
+                    }
+                }
+                if versionList.titleOfSelectedItem == "Release IA32" {
+                    arguments.append("Release")
+                    arguments.append("Ia32")
+                    arguments.append("0")
+                }
+                if versionList.titleOfSelectedItem == "Debug IA32" {
+                    arguments.append("Debug")
+                    arguments.append("Ia32")
+                    arguments.append("0")
+                }
+                if versionList.titleOfSelectedItem == "None" {
+                    arguments.append("None")
+                    arguments.append("None")
+                    arguments.append("1")
+                }
+                if withStdLogChecked.state == NSControl.StateValue.on {
                     arguments.append("1")
                 } else {
                     arguments.append("0")
                 }
+                if withErrLogChecked.state == NSControl.StateValue.on {
+                    arguments.append("1")
+                } else {
+                    arguments.append("0")
+                }
+                runOCBuilderScript(arguments)
+            } else {
+                showAlert()
             }
-            if versionList.titleOfSelectedItem == "Debug IA32" {
-                arguments.append("Debug")
-                arguments.append("Ia32")
-                arguments.append("0")
-            }
-            if versionList.titleOfSelectedItem == "Release IA32" {
-                arguments.append("Release")
-                arguments.append("Ia32")
-                arguments.append("0")
-            }
-            runOCBuilderScript(arguments)
+        } else {
+            showAlert()
         }
     }
     
@@ -151,6 +174,15 @@ class TaskViewController: NSViewController {
         let alert = NSAlert()
         alert.messageText = "Xcode Application is not installed!"
         alert.informativeText = "In order to use OCBuilder you must have the full Xcode application installed. Please install the full Xcode application from https://apps.apple.com/us/app/xcode/id497799835?mt=12."
+        alert.alertStyle = .critical
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
+    }
+
+    func showAlert() {
+        let alert = NSAlert()
+        alert.messageText = "Mismatch mandatory selection(s)"
+        alert.informativeText = "You must choose 'With Kexts' with 'Select Version = None' and choose too a 'Location to save Builds'"
         alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
         alert.runModal()
