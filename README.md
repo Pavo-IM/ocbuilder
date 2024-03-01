@@ -13,6 +13,7 @@ MacOS App to compile Opencore, common drivers and kexts that are used with OpenC
 - [OpenCorePkg](https://github.com/acidanthera/OpenCorePkg.git)
 - [AppleSupportPkg](https://github.com/acidanthera/AppleSupportPkg.git)
 - [OpenCoreShell](https://github.com/acidanthera/OpenCoreShell.git)
+and more ... if you manage manually the kexts list "OC_kexts.plist" with your pefered plist editor
 
 ## The app can be installed from unofficial [Homebrew](https://brew.sh/) cask tap via one-line command:
 `brew cask install yurikoles/yurikoles/ocbuilder`
@@ -91,3 +92,26 @@ This app will check to see if you have all the required tools installed in order
 |   |   |   |--obtain_recovery.php
 |   |   |   |--recovery_urls.txt
 ```
+
+You choose to build a Release a Debug X64 IA32 or you don't want to build OpenCore.
+You choose the build dest. repert.
+You choose to build some kexts or not.
+You choose to get std and/or err logs (in working dir, aka /private/tmp/OCBuilder_Clone).
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/a82ede90-f164-4b8c-82fd-298300a2141c)
+
+You manage the kexts list (manually) if you want to build kext(s)
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/40202ef0-d030-4b1d-a2f8-e3cf0b830a6a)
+
+Working dir content
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/d5dcc515-d7b3-4706-8ef8-802220045022)
+
+At the end you can select and save the content of that main window
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/64292bf7-d62d-429f-a659-a4c936a7dbe6)
+
+And the result in the build dest. dir.
+
+![image](https://github.com/matxpa/ocbuilder/assets/70573409/612db91c-c92c-44c0-a79f-9d471fb5ce99)

@@ -18,9 +18,11 @@ class TaskViewController: NSViewController {
     @IBOutlet var progressBar: NSProgressIndicator!
     @IBOutlet var stopButton: NSButton!
     @IBOutlet weak var versionList: NSPopUpButton!
-    let versionArray = ["Debug", "Release", "Debug IA32", "Release IA32"]
+    let versionArray = ["Release X64", "Debug X64", "Release IA32", "Debug IA32", "None"]
     @IBOutlet weak var withKextsChecked: NSButton!
-    
+    @IBOutlet weak var withStdLogChecked: NSButton!
+    @IBOutlet weak var withErrLogChecked: NSButton!
+
     override func viewDidLoad() {
         stopButton.isEnabled = false
         progressBar.isHidden = true
@@ -44,34 +46,64 @@ class TaskViewController: NSViewController {
         stopButton.isEnabled = true
         progressBar.isHidden = false
         outputText.string = ""
-        if let repositoryURL = pathLocation.url {
-            let cloneLocation = "/tmp"
-            let finalLocation = repositoryURL.path
-            var arguments:[String] = []
-            arguments.append(cloneLocation)
-            arguments.append(finalLocation)
-            buildButton.isEnabled = false
-            progressBar.startAnimation(self)
-            if versionList.titleOfSelectedItem == "Debug" {
-                if withKextsChecked.state == NSControl.StateValue.on {
-                    runDebugScript(arguments)
-                } else {
-                    runDebugWithoutKextScript(arguments)
+        if (versionList.titleOfSelectedItem == "None" && withKextsChecked.state == NSControl.StateValue.on) || versionList.titleOfSelectedItem != "None"  {
+            if let repositoryURL = pathLocation.url {
+                let cloneLocation = "/tmp"
+                let finalLocation = repositoryURL.path
+                var arguments:[String] = []
+                arguments.append(cloneLocation)
+                arguments.append(finalLocation)
+                buildButton.isEnabled = false
+                progressBar.startAnimation(self)
+                if versionList.titleOfSelectedItem == "Release X64" {
+                    arguments.append("Release")
+                    arguments.append("X64")
+                    if withKextsChecked.state == NSControl.StateValue.on {
+                        arguments.append("1")
+                    } else {
+                        arguments.append("0")
+                    }
                 }
-            }
-            if versionList.titleOfSelectedItem == "Release" {
-                if withKextsChecked.state == NSControl.StateValue.on {
-                    runReleaseScript(arguments)
-                } else {
-                    runReleaseWithoutKextScript(arguments)
-                }
-                if versionList.titleOfSelectedItem == "Debug IA32" {
-                    runDebugWithoutKextScriptIA32(arguments)
+                if versionList.titleOfSelectedItem == "Debug X64" {
+                    arguments.append("Debug")
+                    arguments.append("X64")
+                    if withKextsChecked.state == NSControl.StateValue.on {
+                        arguments.append("1")
+                    } else {
+                        arguments.append("0")
+                    }
                 }
                 if versionList.titleOfSelectedItem == "Release IA32" {
-                    runReleaseWithoutKextScriptIA32(arguments)
+                    arguments.append("Release")
+                    arguments.append("Ia32")
+                    arguments.append("0")
                 }
+                if versionList.titleOfSelectedItem == "Debug IA32" {
+                    arguments.append("Debug")
+                    arguments.append("Ia32")
+                    arguments.append("0")
+                }
+                if versionList.titleOfSelectedItem == "None" {
+                    arguments.append("None")
+                    arguments.append("None")
+                    arguments.append("1")
+                }
+                if withStdLogChecked.state == NSControl.StateValue.on {
+                    arguments.append("1")
+                } else {
+                    arguments.append("0")
+                }
+                if withErrLogChecked.state == NSControl.StateValue.on {
+                    arguments.append("1")
+                } else {
+                    arguments.append("0")
+                }
+                runOCBuilderScript(arguments)
+            } else {
+                showAlert()
             }
+        } else {
+            showAlert()
         }
     }
     
@@ -84,12 +116,12 @@ class TaskViewController: NSViewController {
         }
     }
     
-    func runReleaseScript(_ arguments:[String]) {
+    func runOCBuilderScript(_ arguments:[String]) {
         isRunning = true
         let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
         taskQueue.async {
-            guard let path = Bundle.main.path(forResource: "release",ofType:"command") else {
-                print("Unable to locate release.command")
+            guard let path = Bundle.main.path(forResource: "runOCBuilderScript",ofType:"command") else {
+                print("Unable to locate runOCBuilderScript.command")
                 return
             }
             self.buildTask = Process()
@@ -106,258 +138,30 @@ class TaskViewController: NSViewController {
                     self.isRunning = false
                 })
             }
-            self.captureStandardOutputAndRouteToTextViewReleaseWithKext(self.buildTask)
+            self.captureStandardOutput(self.buildTask)
             self.buildTask.launch()
             self.buildTask.waitUntilExit()
         }
     }
     
-    func runReleaseWithoutKextScript(_ arguments:[String]) {
-        isRunning = true
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
-            guard let path = Bundle.main.path(forResource: "release_without_kexts",ofType:"command") else {
-                print("Unable to locate release_without_kexts.command")
-                return
-            }
-            self.buildTask = Process()
-            self.buildTask.launchPath = path
-            self.buildTask.arguments = arguments
-            self.buildTask.terminationHandler = {
-                task in
-                DispatchQueue.main.async(execute: {
-                    self.stopButton.isEnabled = false
-                    self.buildButton.isEnabled = true
-                    self.progressBar.isHidden = true
-                    self.progressBar.stopAnimation(self)
-                    self.progressBar.doubleValue = 0.0
-                    self.isRunning = false
-                })
-            }
-            self.captureStandardOutputAndRouteToTextViewonReleaseWithoutKext(self.buildTask)
-            self.buildTask.launch()
-            self.buildTask.waitUntilExit()
-        }
-    }
-    
-    func runReleaseWithoutKextScriptIA32(_ arguments:[String]) {
-        isRunning = true
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
-            guard let path = Bundle.main.path(forResource: "release_without_kexts_IA32",ofType:"command") else {
-                print("Unable to locate release_without_kexts_IA32.command")
-                return
-            }
-            self.buildTask = Process()
-            self.buildTask.launchPath = path
-            self.buildTask.arguments = arguments
-            self.buildTask.terminationHandler = {
-                task in
-                DispatchQueue.main.async(execute: {
-                    self.stopButton.isEnabled = false
-                    self.buildButton.isEnabled = true
-                    self.progressBar.isHidden = true
-                    self.progressBar.stopAnimation(self)
-                    self.progressBar.doubleValue = 0.0
-                    self.isRunning = false
-                })
-            }
-            self.captureStandardOutputAndRouteToTextViewonReleaseWithoutKext(self.buildTask)
-            self.buildTask.launch()
-            self.buildTask.waitUntilExit()
-        }
-    }
-    
-    func runDebugScript(_ arguments:[String]) {
-        isRunning = true
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
-            guard let path = Bundle.main.path(forResource: "debug",ofType:"command") else {
-                print("Unable to locate release.command")
-                return
-            }
-            self.buildTask = Process()
-            self.buildTask.launchPath = path
-            self.buildTask.arguments = arguments
-            self.buildTask.terminationHandler = {
-                task in
-                DispatchQueue.main.async(execute: {
-                    self.stopButton.isEnabled = false
-                    self.buildButton.isEnabled = true
-                    self.progressBar.isHidden = true
-                    self.progressBar.stopAnimation(self)
-                    self.progressBar.doubleValue = 0.0
-                    self.isRunning = false
-                })
-            }
-            self.captureStandardOutputAndRouteToTextViewDebugWithKext(self.buildTask)
-            self.buildTask.launch()
-            self.buildTask.waitUntilExit()
-        }
-    }
-    
-    func runDebugWithoutKextScript(_ arguments:[String]) {
-        isRunning = true
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
-            guard let path = Bundle.main.path(forResource: "debug_without_kexts",ofType:"command") else {
-                print("Unable to locate debug_without_kexts.command")
-                return
-            }
-            self.buildTask = Process()
-            self.buildTask.launchPath = path
-            self.buildTask.arguments = arguments
-            self.buildTask.terminationHandler = {
-                task in
-                DispatchQueue.main.async(execute: {
-                    self.stopButton.isEnabled = false
-                    self.buildButton.isEnabled = true
-                    self.progressBar.isHidden = true
-                    self.progressBar.stopAnimation(self)
-                    self.progressBar.doubleValue = 0.0
-                    self.isRunning = false
-                })
-            }
-            self.captureStandardOutputAndRouteToTextViewonDebugWithoutKext(self.buildTask)
-            self.buildTask.launch()
-            self.buildTask.waitUntilExit()
-        }
-    }
-
-    func runDebugWithoutKextScriptIA32(_ arguments:[String]) {
-        isRunning = true
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
-            guard let path = Bundle.main.path(forResource: "debug_without_kexts_IA32",ofType:"command") else {
-                print("Unable to locate debug_without_kexts_IA32.command")
-                return
-            }
-            self.buildTask = Process()
-            self.buildTask.launchPath = path
-            self.buildTask.arguments = arguments
-            self.buildTask.terminationHandler = {
-                task in
-                DispatchQueue.main.async(execute: {
-                    self.stopButton.isEnabled = false
-                    self.buildButton.isEnabled = true
-                    self.progressBar.isHidden = true
-                    self.progressBar.stopAnimation(self)
-                    self.progressBar.doubleValue = 0.0
-                    self.isRunning = false
-                })
-            }
-            self.captureStandardOutputAndRouteToTextViewonDebugWithoutKext(self.buildTask)
-            self.buildTask.launch()
-            self.buildTask.waitUntilExit()
-        }
-    }
-    
-    func captureStandardOutputAndRouteToTextViewonReleaseWithoutKext(_ task:Process) {
+    func captureStandardOutput(_ task:Process) {
         outputPipe = Pipe()
         task.standardOutput = outputPipe
         outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
             notification in
             let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
+            var outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
+            var nextOutput = ""
             DispatchQueue.main.async(execute: {
                 let previousOutput = self.outputText.string
-                let nextOutput = previousOutput + "\n" + outputString
-                self.outputText.string = nextOutput
-                let range = NSRange(location:nextOutput.count,length:0)
-                self.outputText.scrollRangeToVisible(range)
-            })
-            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        }
-    }
-
-    func captureStandardOutputAndRouteToTextViewonReleaseWithoutKextIA32(_ task:Process) {
-        outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
-            notification in
-            let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
-            DispatchQueue.main.async(execute: {
-                let previousOutput = self.outputText.string
-                let nextOutput = previousOutput + "\n" + outputString
-                self.outputText.string = nextOutput
-                let range = NSRange(location:nextOutput.count,length:0)
-                self.outputText.scrollRangeToVisible(range)
-            })
-            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        }
-    }
-    
-    func captureStandardOutputAndRouteToTextViewonDebugWithoutKext(_ task:Process) {
-        outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
-            notification in
-            let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
-            DispatchQueue.main.async(execute: {
-                let previousOutput = self.outputText.string
-                let nextOutput = previousOutput + "\n" + outputString
-                self.outputText.string = nextOutput
-                let range = NSRange(location:nextOutput.count,length:0)
-                self.outputText.scrollRangeToVisible(range)
-            })
-            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        }
-    }
-    
-    func captureStandardOutputAndRouteToTextViewonDebugWithoutKextIA32(_ task:Process) {
-        outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
-            notification in
-            let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
-            DispatchQueue.main.async(execute: {
-                let previousOutput = self.outputText.string
-                let nextOutput = previousOutput + "\n" + outputString
-                self.outputText.string = nextOutput
-                let range = NSRange(location:nextOutput.count,length:0)
-                self.outputText.scrollRangeToVisible(range)
-            })
-            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        }
-    }
-    
-    func captureStandardOutputAndRouteToTextViewReleaseWithKext(_ task:Process) {
-        outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
-            notification in
-            let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
-            DispatchQueue.main.async(execute: {
-                let previousOutput = self.outputText.string
-                let nextOutput = previousOutput + "\n" + outputString
-                self.outputText.string = nextOutput
-                let range = NSRange(location:nextOutput.count,length:0)
-                self.outputText.scrollRangeToVisible(range)
-            })
-            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        }
-    }
-    
-    func captureStandardOutputAndRouteToTextViewDebugWithKext(_ task:Process) {
-        outputPipe = Pipe()
-        task.standardOutput = outputPipe
-        outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
-            notification in
-            let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
-            DispatchQueue.main.async(execute: {
-                let previousOutput = self.outputText.string
-                let nextOutput = previousOutput + "\n" + outputString
+                if String(outputString.utf16.prefix(2)) == "\\n" {
+                    outputString.remove(at: outputString.startIndex)
+                    outputString.remove(at: outputString.startIndex)
+                    nextOutput = previousOutput + "\n" + outputString
+                } else {
+                    nextOutput = previousOutput + outputString
+                }
                 self.outputText.string = nextOutput
                 let range = NSRange(location:nextOutput.count,length:0)
                 self.outputText.scrollRangeToVisible(range)
@@ -370,6 +174,15 @@ class TaskViewController: NSViewController {
         let alert = NSAlert()
         alert.messageText = "Xcode Application is not installed!"
         alert.informativeText = "In order to use OCBuilder you must have the full Xcode application installed. Please install the full Xcode application from https://apps.apple.com/us/app/xcode/id497799835?mt=12."
+        alert.alertStyle = .critical
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
+    }
+
+    func showAlert() {
+        let alert = NSAlert()
+        alert.messageText = "Mismatch mandatory selection(s)"
+        alert.informativeText = "You must choose 'With Kexts' with 'Select Version = None' and choose too a 'Location to save Builds'"
         alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
         alert.runModal()
